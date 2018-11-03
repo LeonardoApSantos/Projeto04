@@ -15,6 +15,8 @@ public class Db {
     public static ArrayList<Question> getTest(){
         ArrayList<Question> test = new ArrayList<>();
         
+        int[] aux = new int[10];
+        
         String a1 = "Um medalhão Maia";
         String a2 = "A maçã do Éden";
         String a3 = "Uma chave de ouro";
@@ -54,27 +56,221 @@ public class Db {
         String j1 = "O martelo de Thor";
         String j2 = "Uma bota";
         String j3 = "Blade of Chaos";
-                
-        test.add(new Question("No início do jogo Assassin's Creed III, Haytham Kenway se infiltra em uma ópera a fim de roubar um certo objeto, que objeto era esse?", 
+        
+        /*for(int i=0;i<10;i++){
+            //formula que armazenará no vetor aux 10 valores de 1 a 6
+        }*/
+        
+        aux[0]= 1;
+        aux[1]= 6;
+        aux[2]= 3;
+        aux[3]= 5;
+        aux[4]= 6;
+        aux[5]= 4;
+        aux[6]= 2;
+        aux[7]= 1;
+        aux[8]= 3;
+        aux[9]= 2;
+        
+        if(aux[0]==1){
+            test.add(new Question("No início do jogo Assassin's Creed III, Haytham Kenway se infiltra em uma ópera a fim de roubar um certo objeto, que objeto era esse?", 
                 a1, new String[]{a1, a2, a3}));
-        test.add(new Question ("Qual o nome do irmão de Dante, protagonista da série de games Devil May Cry?", 
+        } else if(aux[0]==2){
+            test.add(new Question("No início do jogo Assassin's Creed III, Haytham Kenway se infiltra em uma ópera a fim de roubar um certo objeto, que objeto era esse?", 
+                a1, new String[]{a1, a3, a2}));
+        } else if(aux[0]==3){
+            test.add(new Question("No início do jogo Assassin's Creed III, Haytham Kenway se infiltra em uma ópera a fim de roubar um certo objeto, que objeto era esse?", 
+                a1, new String[]{a2, a1, a3}));
+        } else if(aux[0]==4){
+            test.add(new Question("No início do jogo Assassin's Creed III, Haytham Kenway se infiltra em uma ópera a fim de roubar um certo objeto, que objeto era esse?", 
+                a1, new String[]{a2, a3, a1}));
+        } else if(aux[0]==5){
+            test.add(new Question("No início do jogo Assassin's Creed III, Haytham Kenway se infiltra em uma ópera a fim de roubar um certo objeto, que objeto era esse?", 
+                a1, new String[]{a3, a1, a2}));
+        } else if(aux[0]==6){
+            test.add(new Question("No início do jogo Assassin's Creed III, Haytham Kenway se infiltra em uma ópera a fim de roubar um certo objeto, que objeto era esse?", 
+                a1, new String[]{a3, a2, a1}));
+        }
+        
+        if(aux[1]==1){
+            test.add(new Question("Qual o nome do irmão de Dante, protagonista da série de games Devil May Cry?", 
                 b1, new String[]{b1, b2, b3}));
-        test.add(new Question ("Quem narra o jogo FIFA 14 no idioma Português do Brasil?", 
+        } else if(aux[1]==2){
+            test.add(new Question("Qual o nome do irmão de Dante, protagonista da série de games Devil May Cry?", 
+                b1, new String[]{b1, b3, b2}));
+        } else if(aux[1]==3){
+            test.add(new Question("Qual o nome do irmão de Dante, protagonista da série de games Devil May Cry?", 
+                b1, new String[]{b2, b1, b3}));
+        } else if(aux[1]==4){
+            test.add(new Question("Qual o nome do irmão de Dante, protagonista da série de games Devil May Cry?", 
+                b1, new String[]{b2, b3, b1}));
+        } else if(aux[1]==5){
+            test.add(new Question("Qual o nome do irmão de Dante, protagonista da série de games Devil May Cry?", 
+                b1, new String[]{b3, b1, b2}));
+        } else if(aux[1]==6){
+            test.add(new Question("Qual o nome do irmão de Dante, protagonista da série de games Devil May Cry?", 
+                b1, new String[]{b3, b2, b1}));
+        }
+        
+        if(aux[2]==1){
+            test.add(new Question("Quem narra o jogo FIFA 14 no idioma Português do Brasil?", 
                 c1, new String[]{c1, c2, c3}));
-        test.add(new Question ("Quantos deuses Kratos aniquila no decorrer de God Of War III?", 
+        } else if(aux[2]==2){
+            test.add(new Question("Quem narra o jogo FIFA 14 no idioma Português do Brasil?", 
+                c1, new String[]{c1, c3, c2}));
+        } else if(aux[2]==3){
+            test.add(new Question("Quem narra o jogo FIFA 14 no idioma Português do Brasil?", 
+                c1, new String[]{c2, c1, c3}));
+        } else if(aux[2]==4){
+            test.add(new Question("Quem narra o jogo FIFA 14 no idioma Português do Brasil?", 
+                c1, new String[]{c2, c3, c1}));
+        } else if(aux[2]==5){
+            test.add(new Question("Quem narra o jogo FIFA 14 no idioma Português do Brasil?", 
+                c1, new String[]{c3, c1, c2}));
+        } else if(aux[2]==6){
+            test.add(new Question("Quem narra o jogo FIFA 14 no idioma Português do Brasil?", 
+                c1, new String[]{c3, c2, c1}));
+        }
+        
+        if(aux[3]==1){
+            test.add(new Question("Quantos deuses Kratos aniquila no decorrer de God Of War III?", 
                 d1, new String[]{d1, d2, d3}));
-        test.add(new Question ("No final do jogo GTA V,como Trevor, Michael e Franklin matam Devin?", 
+        } else if(aux[3]==2){
+            test.add(new Question("Quantos deuses Kratos aniquila no decorrer de God Of War III?", 
+                d1, new String[]{d1, d3, d2}));
+        } else if(aux[3]==3){
+            test.add(new Question("Quantos deuses Kratos aniquila no decorrer de God Of War III?", 
+                d1, new String[]{d2, d1, d3}));
+        } else if(aux[3]==4){
+            test.add(new Question("Quantos deuses Kratos aniquila no decorrer de God Of War III?", 
+                d1, new String[]{d2, d3, d1}));
+        } else if(aux[3]==5){
+            test.add(new Question("Quantos deuses Kratos aniquila no decorrer de God Of War III?", 
+                d1, new String[]{d3, d1, d2}));
+        } else if(aux[3]==6){
+            test.add(new Question("Quantos deuses Kratos aniquila no decorrer de God Of War III?", 
+                d1, new String[]{d3, d2, d1}));
+        }
+        
+        if(aux[4]==1){
+            test.add(new Question("No final do jogo GTA V,como Trevor, Michael e Franklin matam Devin?", 
                 e1, new String[]{e1, e2, e3}));
-        test.add(new Question ("Qual o nome da cidade em que se passa o Left 4 Dead 2?", 
+        } else if(aux[4]==2){
+            test.add(new Question("No final do jogo GTA V,como Trevor, Michael e Franklin matam Devin?", 
+                e1, new String[]{e1, e3, e2}));
+        } else if(aux[4]==3){
+            test.add(new Question("No final do jogo GTA V,como Trevor, Michael e Franklin matam Devin?", 
+                e1, new String[]{e2, e1, e3}));
+        } else if(aux[4]==4){
+            test.add(new Question("No final do jogo GTA V,como Trevor, Michael e Franklin matam Devin?", 
+                e1, new String[]{e2, e3, e1}));
+        } else if(aux[4]==5){
+            test.add(new Question("No final do jogo GTA V,como Trevor, Michael e Franklin matam Devin?", 
+                e1, new String[]{e3, e1, e2}));
+        } else if(aux[4]==6){
+            test.add(new Question("No final do jogo GTA V,como Trevor, Michael e Franklin matam Devin?", 
+                e1, new String[]{e3, e2, e1}));
+        }
+        
+        if(aux[5]==1){
+            test.add(new Question("Qual o nome da cidade em que se passa o Left 4 Dead 2?", 
                 f1, new String[]{f1, f2, f3}));
-        test.add(new Question ("Quem é Hanzo Hasashi no game Mortal Kombat?", 
+        } else if(aux[5]==2){
+            test.add(new Question("Qual o nome da cidade em que se passa o Left 4 Dead 2?", 
+                f1, new String[]{f1, f3, f2}));
+        } else if(aux[5]==3){
+            test.add(new Question("Qual o nome da cidade em que se passa o Left 4 Dead 2?", 
+                f1, new String[]{f2, f1, f3}));
+        } else if(aux[5]==4){
+            test.add(new Question("Qual o nome da cidade em que se passa o Left 4 Dead 2?", 
+                f1, new String[]{f2, f3, f1}));
+        } else if(aux[5]==5){
+            test.add(new Question("Qual o nome da cidade em que se passa o Left 4 Dead 2?", 
+                f1, new String[]{f3, f1, f2}));
+        } else if(aux[5]==6){
+            test.add(new Question("Qual o nome da cidade em que se passa o Left 4 Dead 2?", 
+                f1, new String[]{f3, f2, f1}));
+        }
+        
+        if(aux[6]==1){
+            test.add(new Question("Quem é Hanzo Hasashi no game Mortal Kombat?", 
                 g1, new String[]{g1, g2, g3}));
-        test.add(new Question ("Em que ano foi lançado o jogo Need For Speed Underground?", 
+        } else if(aux[6]==2){
+            test.add(new Question("Quem é Hanzo Hasashi no game Mortal Kombat?", 
+                g1, new String[]{g1, g3, g2}));
+        } else if(aux[6]==3){
+            test.add(new Question("Quem é Hanzo Hasashi no game Mortal Kombat?", 
+                g1, new String[]{g2, g1, g3}));
+        } else if(aux[6]==4){
+            test.add(new Question("Quem é Hanzo Hasashi no game Mortal Kombat?", 
+                g1, new String[]{g2, g3, g1}));
+        } else if(aux[6]==5){
+            test.add(new Question("Quem é Hanzo Hasashi no game Mortal Kombat?", 
+                g1, new String[]{g3, g1, g2}));
+        } else if(aux[6]==6){
+            test.add(new Question("Quem é Hanzo Hasashi no game Mortal Kombat?", 
+                g1, new String[]{g3, g2, g1}));
+        }
+        
+        if(aux[7]==1){
+            test.add(new Question("Em que ano foi lançado o jogo Need For Speed Underground?", 
                 h1, new String[]{h1, h2, h3}));
-        test.add(new Question ("Por que, em Shadow of the Colossus, Wander precisa derrotar os colossos?", 
+        } else if(aux[7]==2){
+            test.add(new Question("Em que ano foi lançado o jogo Need For Speed Underground?", 
+                h1, new String[]{h1, h3, h2}));
+        } else if(aux[7]==3){
+            test.add(new Question("Em que ano foi lançado o jogo Need For Speed Underground?", 
+                h1, new String[]{h2, h1, h3}));
+        } else if(aux[7]==4){
+            test.add(new Question("Em que ano foi lançado o jogo Need For Speed Underground?", 
+                h1, new String[]{h2, h3, h1}));
+        } else if(aux[7]==5){
+            test.add(new Question("Em que ano foi lançado o jogo Need For Speed Underground?", 
+                h1, new String[]{h3, h1, h2}));
+        } else if(aux[7]==6){
+            test.add(new Question("Em que ano foi lançado o jogo Need For Speed Underground?", 
+                h1, new String[]{h3, h2, h1}));
+        }
+        
+        if(aux[8]==1){
+            test.add(new Question("Por que, em Shadow of the Colossus, Wander precisa derrotar os colossos?", 
                 i1, new String[]{i1, i2, i3}));
-        test.add(new Question ("Em Tomb Raider: Underworld, o que Lara Croft usa para enfrentar Natla?", 
+        } else if(aux[8]==2){
+            test.add(new Question("Por que, em Shadow of the Colossus, Wander precisa derrotar os colossos?", 
+                i1, new String[]{i1, i3, i2}));
+        } else if(aux[8]==3){
+            test.add(new Question("Por que, em Shadow of the Colossus, Wander precisa derrotar os colossos?", 
+                i1, new String[]{i2, i1, i3}));
+        } else if(aux[8]==4){
+            test.add(new Question("Por que, em Shadow of the Colossus, Wander precisa derrotar os colossos?", 
+                i1, new String[]{i2, i3, i1}));
+        } else if(aux[8]==5){
+            test.add(new Question("Por que, em Shadow of the Colossus, Wander precisa derrotar os colossos?", 
+                i1, new String[]{i3, i1, i2}));
+        } else if(aux[8]==6){
+            test.add(new Question("Por que, em Shadow of the Colossus, Wander precisa derrotar os colossos?", 
+                i1, new String[]{i3, i2, i1}));
+        }
+        
+        if(aux[9]==1){
+            test.add(new Question("Em Tomb Raider: Underworld, o que Lara Croft usa para enfrentar Natla?", 
                 j1, new String[]{j1, j2, j3}));
+        } else if(aux[9]==2){
+            test.add(new Question("Em Tomb Raider: Underworld, o que Lara Croft usa para enfrentar Natla?", 
+                j1, new String[]{j1, j3, j2}));
+        } else if(aux[9]==3){
+            test.add(new Question("Em Tomb Raider: Underworld, o que Lara Croft usa para enfrentar Natla?", 
+                j1, new String[]{j2, j1, j3}));
+        } else if(aux[9]==4){
+            test.add(new Question("Em Tomb Raider: Underworld, o que Lara Croft usa para enfrentar Natla?", 
+                j1, new String[]{j2, j3, j1}));
+        } else if(aux[9]==5){
+            test.add(new Question("Em Tomb Raider: Underworld, o que Lara Croft usa para enfrentar Natla?", 
+                j1, new String[]{j3, j1, j2}));
+        } else if(aux[9]==6){
+            test.add(new Question("Em Tomb Raider: Underworld, o que Lara Croft usa para enfrentar Natla?", 
+                j1, new String[]{j3, j2, j1}));
+        }
         return test;
     }
     
