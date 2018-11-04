@@ -278,7 +278,7 @@ public class Db {
     public static ArrayList<User> getUser(){
         Users.add(new User ("Leonardo"));
         Users.add(new User ("Thiago"));
-        Users.add(new User ("Vinícius"));
+        Users.add(new User ("Vinicius"));
         return Users;
     }
     public static boolean usersdoArrayList(String user) {
