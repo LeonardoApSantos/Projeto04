@@ -57,20 +57,10 @@ public class Db {
         String j2 = "Uma bota";
         String j3 = "Blade of Chaos";
         
-        /*for(int i=0;i<10;i++){
-            //formula que armazenará no vetor aux 10 valores de 1 a 6
-        }*/
-        
-        aux[0]= 1;
-        aux[1]= 6;
-        aux[2]= 3;
-        aux[3]= 5;
-        aux[4]= 6;
-        aux[5]= 4;
-        aux[6]= 2;
-        aux[7]= 1;
-        aux[8]= 3;
-        aux[9]= 2;
+        for(int i=0;i<10;i++){
+            int valor = (int) (Math.random() * 7);
+            aux[i]=valor;
+        }
         
         if(aux[0]==1){
             test.add(new Question("No início do jogo Assassin's Creed III, Haytham Kenway se infiltra em uma ópera a fim de roubar um certo objeto, que objeto era esse?", 
