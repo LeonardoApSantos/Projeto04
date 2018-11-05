@@ -16,8 +16,11 @@ public class Db {
         ArrayList<Question> test = new ArrayList<>();
         
         String[] q = new String[10];
-        int[] x = new int[10];
+        int x;
         String[][] y = new String[10][3];
+        String a1 = "";
+        String a2 = "";
+        String a3 = "";
         
         q[0] = "No início do jogo Assassin's Creed III, Haytham Kenway se infiltra em uma ópera a fim de roubar um certo objeto, que objeto era esse?";
         q[1] = "Qual o nome do irmão de Dante, protagonista da série de games Devil May Cry?";
@@ -73,26 +76,39 @@ public class Db {
         for(int i=0;i<10;i++){
             
             int valor = (int) (Math.random() * 7);
-            x[i]=valor;
+            x=valor;
             
-            if(x[i]==1){
-                test.add(new Question(q[i], 
-                y[i][0], new String[]{y[i][0], y[i][1], y[i][2]}));
-            } else if(x[i]==2){
-                test.add(new Question(q[i], 
-                y[i][0], new String[]{y[i][0], y[i][2], y[i][1]}));
-            } else if(x[i]==3){
-                test.add(new Question(q[i], 
-                y[i][0], new String[]{y[i][1], y[i][0], y[i][2]}));
-            } else if(x[i]==4){
-                test.add(new Question(q[i], 
-                y[i][0], new String[]{y[i][1], y[i][2], y[i][0]}));
-            } else if(x[i]==5){
-                test.add(new Question(q[i], 
-                y[i][0], new String[]{y[i][2], y[i][0], y[i][1]}));
-            } else if(x[i]==6){
-                test.add(new Question(q[i], 
-                y[i][0], new String[]{y[i][2], y[i][1], y[i][0]}));
+            a1 = y[i][0];
+            a2 = y[i][1];
+            a3 = y[i][2];
+            
+            switch (x) {
+                case 1:
+                    test.add(new Question(q[i],
+                            a1, new String[]{a1, a2, a3}));
+                    break;
+                case 2:
+                    test.add(new Question(q[i],
+                            a1, new String[]{a1, a3, a2}));
+                    break;
+                case 3:
+                    test.add(new Question(q[i],
+                            a1, new String[]{a2, a1, a3}));
+                    break;
+                case 4:
+                    test.add(new Question(q[i],
+                            a1, new String[]{a2, a3, a1}));
+                    break;
+                case 5:
+                    test.add(new Question(q[i],
+                            a1, new String[]{a3, a1, a2}));
+                    break;
+                case 6:
+                    test.add(new Question(q[i],
+                            a1, new String[]{a3, a2, a1}));
+                    break;
+                default:
+                    break;
             }
         }
         return test;
