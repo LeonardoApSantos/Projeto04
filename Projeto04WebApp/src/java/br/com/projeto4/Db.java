@@ -19,8 +19,8 @@ public class Db {
     public static ArrayList<Question> getTest(){
         ArrayList<Question> test = new ArrayList<>();
         
-        String[] q = new String[10];
         int x;
+        String[] q = new String[10];
         String[][] y = new String[10][3];
         String a1 = "";
         String a2 = "";
@@ -77,38 +77,63 @@ public class Db {
         y[9][1] = "Uma bota";
         y[9][2] = "Blade of Chaos";
         
+        int aux = 0;
+        int s = 0;
+        int[] t = new int[10];
+        
         for(int i=0;i<10;i++){
             
             int valor = (int) (Math.random() * 7);
             x=valor;
             
-            a1 = y[i][0];
-            a2 = y[i][1];
-            a3 = y[i][2];
+            if(aux==0){
+                int ale = (int) (Math.random() * 7);
+                t[i]=ale;
+                aux++;
+            } else {
+                while(aux<10){
+                    int ale = (int) (Math.random() * 7);
+                        
+                    for(int z=0;z<aux;z++){
+                        if(t[z]==ale){
+                            s++;
+                        }
+                    }
+                    if(s==0){
+                        t[aux]=ale;
+                        aux++;
+                    }
+                }
+                s=0;
+            }
+            
+            a1 = y[t[i]][0];
+            a2 = y[t[i]][1];
+            a3 = y[t[i]][2];
             
             switch (x) {
                 case 1:
-                    test.add(new Question(q[i],
+                    test.add(new Question(q[t[i]],
                             a1, new String[]{a1, a2, a3}));
                     break;
                 case 2:
-                    test.add(new Question(q[i],
+                    test.add(new Question(q[t[i]],
                             a1, new String[]{a1, a3, a2}));
                     break;
                 case 3:
-                    test.add(new Question(q[i],
+                    test.add(new Question(q[t[i]],
                             a1, new String[]{a2, a1, a3}));
                     break;
                 case 4:
-                    test.add(new Question(q[i],
+                    test.add(new Question(q[t[i]],
                             a1, new String[]{a2, a3, a1}));
                     break;
                 case 5:
-                    test.add(new Question(q[i],
+                    test.add(new Question(q[t[i]],
                             a1, new String[]{a3, a1, a2}));
                     break;
                 case 6:
-                    test.add(new Question(q[i],
+                    test.add(new Question(q[t[i]],
                             a1, new String[]{a3, a2, a1}));
                     break;
                 default:
