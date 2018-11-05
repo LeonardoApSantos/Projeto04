@@ -5,7 +5,11 @@
  */
 package br.com.projeto4;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.SimpleFormatter;
 
 /**
  *
@@ -112,6 +116,45 @@ public class Db {
             }
         }
         return test;
+    }
+    
+    private static ArrayList<Test> Testes = new ArrayList<>();
+    
+    public static ArrayList<Test> getTestes(){
+        if(Testes.isEmpty()){
+        Calendar d1 = Calendar.getInstance();
+        Calendar d2 = Calendar.getInstance();
+        Calendar d3 = Calendar.getInstance();
+        Calendar d4 = Calendar.getInstance();
+        Calendar d5 = Calendar.getInstance();
+        Calendar d6 = Calendar.getInstance();
+        Calendar d7 = Calendar.getInstance();
+        Calendar d8 = Calendar.getInstance();
+        Calendar d9 = Calendar.getInstance();
+        Calendar d10 = Calendar.getInstance();
+        
+        d1.add(Calendar.DAY_OF_MONTH, 0);
+        Testes.add(new Test("Vinicius", 75, d1));
+        d2.add(Calendar.DAY_OF_MONTH, -1);
+        Testes.add(new Test("Thiago", 65, d2));
+        d3.add(Calendar.DAY_OF_MONTH, -1);
+        Testes.add(new Test("Thiago", 60, d3));
+        d4.add(Calendar.DAY_OF_MONTH, -2);
+        Testes.add(new Test("Leonardo", 85, d4));
+        d5.add(Calendar.DAY_OF_MONTH, -3);
+        Testes.add(new Test("Vinicius", 90, d5));
+        d6.add(Calendar.DAY_OF_MONTH, -3);
+        Testes.add(new Test("Leonardo", 55, d6));
+        d7.add(Calendar.DAY_OF_MONTH, -4);
+        Testes.add(new Test("Vinicius", 45, d7));
+        d8.add(Calendar.DAY_OF_MONTH, -4);
+        Testes.add(new Test("Leonardo", 60, d8));
+        d9.add(Calendar.DAY_OF_MONTH, -5);
+        Testes.add(new Test("Thiago", 95, d9));
+        d10.add(Calendar.DAY_OF_MONTH, -6);
+        Testes.add(new Test("Vinicius", 55, d10));
+        }
+        return Testes;
     }
     
     private static final ArrayList<User> Users = new ArrayList<>();

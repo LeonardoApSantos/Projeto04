@@ -4,6 +4,9 @@
     Author     : Leona
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="br.com.projeto4.Question"%>
+<%@page import="br.com.projeto4.Test"%>
 <%@page import="br.com.projeto4.User"%>
 <%@page import="br.com.projeto4.Db"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,6 +21,7 @@
     <body>
         <!--***********Checagem de Sessão***********-->
         <%
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");   
         String usuario = "";
         if(request.getParameter("botaoEntrar")!=null && Db.usersdoArrayList(request.getParameter("nome"))){
             session.setAttribute("usuario", request.getParameter("nome"));
@@ -61,21 +65,17 @@
                                     <th>Data</th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                        <td>02/11/2018</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                        <td>02/11/2018</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                        <td>02/11/2018</td>
-                                    </tr>
+                                    <%
+                                    
+                                    for(Test t: Db.getTestes()){
+                                        if(t.getNomeUsuario().equals(usuario)){%>
+                                        <tr>
+                                            <td><%=t.getNomeUsuario()%></td>
+                                            <td><%=t.getNota()%></td>
+                                            <td><%=formato.format(t.getData().getTime())%></td>
+                                        </tr>
+                                        <%}
+                                    }%>
                                 </tbody>
                             </table>
                         </div>
@@ -90,6 +90,7 @@
                                     <th>Nota</th>
                                 </thead>
                                 <tbody>
+                                    
                                     <tr>
                                         <td>Leonardo</td>
                                         <td>7.0</td>
@@ -132,21 +133,13 @@
                                     <th>Data</th>
                                 </thead>
                                 <tbody>
+                                    <%for(Test t: Db.getTestes()){%>
                                     <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                        <td>02/11/2018</td>
+                                        <td><%=t.getNomeUsuario()%></td>
+                                        <td><%=t.getNota()%></td>
+                                        <td><%=formato.format(t.getData().getTime())%></td>
                                     </tr>
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                        <td>02/11/2018</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                        <td>02/11/2018</td>
-                                    </tr>
+                                    <%}%>
                                 </tbody>
                             </table>
                         </div>
@@ -181,7 +174,20 @@
                 
                 <!--***********Área do login***********-->
                 <div class="col-sm-3 borda">
-                    <h2 class="text-center">Login</h2>
+                    <%if(request.getParameter("botaoCadastrar")!=null){%>
+                        <h2 class="text-center">Cadastro</h2>
+                        <%if(request.getParameter("cadastrar")!=null && request.getParameter("nomec")!=null){
+                            String nome = request.getParameter("nomec");
+                            Db.getUser().add(new User(nome));
+                        }%>
+                        <form method="POST" class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nomec">
+                        <input type="submit" value="Cadastrar" name="cadastrar" class="btn" id="btnLogin">
+                        </form>
+                </div>
+                    <%}else{%>
+                     <h2 class="text-center">Login</h2>
                     
                     <form method="POST" class="form-group">
                         <label for="nome">Nome</label>
@@ -190,13 +196,20 @@
                                 request.getParameter("nome")!=null && 
                                 !Db.usersdoArrayList(request.getParameter("nome"))){%>
                         <span>Digite um nome válido.</span>
-                        <%}%>
+                        <%}/*else if(request.getParameter("botaoCadastrar")!=null && request.getParameter("nome")!=null ){
+
+                            String nome = request.getParameter("nome");
+                            Db.getUser().add(new User(nome));
+                        }*/%>
                         <input type="submit" value="Entrar" name="botaoEntrar" class="btn" id="btnLogin">
+                        <input type="submit" value="Cadastrar" name="botaoCadastrar" class="btn" id="btnLogin">
                     </form>
                 </div>
+                    
+                <%}%>
+                   
                 <%}%>
             </div>
-        </div>
         <%@include file="WEB-INF/jspf/bootstrapBody.jspf" %>
     </body>
 </html>
