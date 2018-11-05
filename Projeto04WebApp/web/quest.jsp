@@ -38,7 +38,7 @@
                     <hr>
             <% } %>
             <input type="submit" name="enviar_test" value="Enviar"/>
-            <a href="home_quest_provisoria.jsp" role="button">Voltar</a>
+            <a href="home.jsp" role="button">Voltar</a>
         </form>
     </body>
 </html>
