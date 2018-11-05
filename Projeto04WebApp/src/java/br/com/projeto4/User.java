@@ -11,6 +11,7 @@ package br.com.projeto4;
  */
 public class User {
     private String user;
+    
     public User(String user){
         this.user=user;
     }
