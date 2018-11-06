@@ -4,6 +4,11 @@
     Author     : Leona
 --%>
 
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.Comparator"%>
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="br.com.projeto4.Question"%>
 <%@page import="br.com.projeto4.Test"%>
@@ -19,9 +24,13 @@
         <title>Home</title>
     </head>
     <body>
-        <!--***********Checagem de Sessão***********-->
+        <!--***********Declaração de Variáveis e Checagem de Sessão***********-->
         <%
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");   
+        /*Calendar d1 = Calendar.getInstance();
+        d1.set(2018, 8, 16, 13, 36, 25);
+        Db.getTestes().add(0, new Test("Nicolas", 80, d1));*/
+        
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss");   
         String usuario = "";
         if(request.getParameter("botaoEntrar")!=null && Db.usersdoArrayList(request.getParameter("nome"))){
             session.setAttribute("usuario", request.getParameter("nome"));
@@ -66,7 +75,6 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                    
                                     for(Test t: Db.getTestes()){
                                         if(t.getNomeUsuario().equals(usuario)){%>
                                         <tr>
@@ -79,7 +87,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        
                         <!--***********Rank***********-->
                         <div class="col-sm-4">
                             <h3>Os melhores!</h3>
@@ -133,8 +140,9 @@
                                     <th>Data</th>
                                 </thead>
                                 <tbody>
-                                    <%for(Test t: Db.getTestes()){%>
+                                    <%for(int i=0; i<=9; i++){%>
                                     <tr>
+                                        <%Test t = Db.getTestes().get(i);%>
                                         <td><%=t.getNomeUsuario()%></td>
                                         <td><%=t.getNota()%></td>
                                         <td><%=formato.format(t.getData().getTime())%></td>
@@ -154,18 +162,18 @@
                                     <th>Nota</th>
                                 </thead>
                                 <tbody>
+                                    <%
+                                    if(usuario==""){
+                                        ArrayList<Test> t = Db.getTestes();
+                                        Collections.sort(t);
+                                    
+                                    for(int i=0; i<=9; i++){%>
                                     <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
+                                        <td><%=t.get(i).getNomeUsuario()%></td>
+                                        <td><%=t.get(i).getNota()%></td>
                                     </tr>
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                    </tr>
+                                    <%}
+                                    }%>
                                 </tbody>
                             </table>
                         </div>

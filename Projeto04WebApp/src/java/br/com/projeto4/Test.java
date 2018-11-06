@@ -6,13 +6,13 @@
 package br.com.projeto4;
 
 import java.util.Calendar;
-import java.util.Date;
+
 
 /**
  *
  * @author Leona
  */
-public class Test {
+public class Test implements Comparable<Test>{
     private String nomeUsuario;
     private double nota;
     private Calendar data;
@@ -23,6 +23,7 @@ public class Test {
         this.data = data;
     }
     
+
     public String getNomeUsuario() {
         return nomeUsuario;
     }
@@ -47,5 +48,24 @@ public class Test {
         this.data = data;
     }
     
+    @Override
+    public int compareTo(Test t) {
+     if (this.nota > t.nota) {
+          return -1;
+     }
+     if (this.nota < t.nota) {
+          return 1;
+     }
+     return 0;
+    }
     
+    public int comparadorNota(Test t) {
+     if (this.nota > t.nota) {
+          return -1;
+     }
+     if (this.nota < t.nota) {
+          return 1;
+     }
+     return 0;
+    }
 }

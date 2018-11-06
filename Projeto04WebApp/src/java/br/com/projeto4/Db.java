@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.logging.SimpleFormatter;
 
 /**
@@ -125,35 +124,34 @@ public class Db {
     public static ArrayList<Test> getTestes(){
         if(Testes.isEmpty()){
         Calendar d1 = Calendar.getInstance();
-        Calendar d2 = Calendar.getInstance();
-        Calendar d3 = Calendar.getInstance();
-        Calendar d4 = Calendar.getInstance();
-        Calendar d5 = Calendar.getInstance();
-        Calendar d6 = Calendar.getInstance();
-        Calendar d7 = Calendar.getInstance();
-        Calendar d8 = Calendar.getInstance();
-        Calendar d9 = Calendar.getInstance();
-        Calendar d10 = Calendar.getInstance();
-        
-        d1.add(Calendar.DAY_OF_MONTH, 0);
+        d1.set(2018, 10, 6, 11, 35, 10);
         Testes.add(new Test("Vinicius", 75, d1));
-        d2.add(Calendar.DAY_OF_MONTH, -1);
+        Calendar d2 = Calendar.getInstance();
+        d2.set(2018, 10, 4, 11, 20, 1);
         Testes.add(new Test("Thiago", 65, d2));
-        d3.add(Calendar.DAY_OF_MONTH, -1);
+        Calendar d3 = Calendar.getInstance();
+        d3.set(2018, 10, 4, 14, 21, 8);
         Testes.add(new Test("Thiago", 60, d3));
-        d4.add(Calendar.DAY_OF_MONTH, -2);
+        Calendar d4 = Calendar.getInstance();
+        d4.set(2018, 10, 3, 17, 12, 36);
         Testes.add(new Test("Leonardo", 85, d4));
-        d5.add(Calendar.DAY_OF_MONTH, -3);
+        Calendar d5 = Calendar.getInstance();
+        d5.set(2018, 10, 2, 15, 3, 55);
         Testes.add(new Test("Vinicius", 90, d5));
-        d6.add(Calendar.DAY_OF_MONTH, -3);
+        Calendar d6 = Calendar.getInstance();
+        d6.set(2018, 10, 1, 10, 9, 47);
         Testes.add(new Test("Leonardo", 55, d6));
-        d7.add(Calendar.DAY_OF_MONTH, -4);
+        Calendar d7 = Calendar.getInstance();
+        d7.set(2018, 10, 1, 8, 10, 48);
         Testes.add(new Test("Vinicius", 45, d7));
-        d8.add(Calendar.DAY_OF_MONTH, -4);
+        Calendar d8 = Calendar.getInstance();
+        d8.set(2018, 9, 30, 9, 42, 2);
         Testes.add(new Test("Leonardo", 60, d8));
-        d9.add(Calendar.DAY_OF_MONTH, -5);
+        Calendar d9 = Calendar.getInstance();
+        d9.set(2018, 9, 25, 16, 55, 5);
         Testes.add(new Test("Thiago", 95, d9));
-        d10.add(Calendar.DAY_OF_MONTH, -6);
+        Calendar d10 = Calendar.getInstance();
+        d10.set(2018, 9, 24, 20, 53, 32);
         Testes.add(new Test("Vinicius", 55, d10));
         }
         return Testes;
