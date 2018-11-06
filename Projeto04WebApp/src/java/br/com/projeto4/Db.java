@@ -8,6 +8,7 @@ package br.com.projeto4;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.logging.SimpleFormatter;
 
@@ -115,6 +116,7 @@ public class Db {
                     break;
             }
         }
+        Collections.shuffle(test);
         return test;
     }
     
