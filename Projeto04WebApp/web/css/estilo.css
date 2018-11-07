@@ -30,6 +30,9 @@ th{
 .borda{
     border: 2px solid #f2f2f2;
 }
+#bordaLogin{
+    border-left: hidden;
+}
 
 .imagem{
     width: 100%;

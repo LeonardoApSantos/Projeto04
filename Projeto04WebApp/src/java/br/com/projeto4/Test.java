@@ -5,14 +5,17 @@
  */
 package br.com.projeto4;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 /**
  *
  * @author Leona
  */
-public class Test implements Comparable<Test>{
+public class Test{
     private String nomeUsuario;
     private double nota;
     private Calendar data;
@@ -48,24 +51,39 @@ public class Test implements Comparable<Test>{
         this.data = data;
     }
     
-    @Override
-    public int compareTo(Test t) {
-     if (this.nota > t.nota) {
-          return -1;
-     }
-     if (this.nota < t.nota) {
-          return 1;
-     }
-     return 0;
+    public static ArrayList<Test> compareNota(ArrayList<Test> Tests){
+        Collections.sort(Tests, new Comparator<Test>(){
+            @Override
+            public int compare(Test t1, Test t2) {
+                if (t1.getNota() > t2.getNota()) {
+                    return -1;
+                }
+                else if (t1.getNota() < t2.getNota()) {
+                    return 1;
+                }
+                else{
+                    return 0;
+                }
+            }
+        });
+        return Tests;
     }
     
-    public int comparadorNota(Test t) {
-     if (this.nota > t.nota) {
-          return -1;
-     }
-     if (this.nota < t.nota) {
-          return 1;
-     }
-     return 0;
+    public static ArrayList<Test> compareData(ArrayList<Test> Tests){
+        Collections.sort(Tests, new Comparator<Test>(){
+            @Override
+            public int compare(Test t1, Test t2) {
+                if (t1.getData().after(t2.getData())) {
+                    return -1;
+                }
+                else if (t1.getData().before(t2.getData())) {
+                    return 1;
+                }
+                else{
+                    return 0;
+                }
+            }
+        });
+        return Tests;
     }
 }

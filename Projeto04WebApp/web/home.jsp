@@ -26,9 +26,7 @@
     <body>
         <!--***********Declaração de Variáveis e Checagem de Sessão***********-->
         <%
-        /*Calendar d1 = Calendar.getInstance();
-        d1.set(2018, 8, 16, 13, 36, 25);
-        Db.getTestes().add(0, new Test("Nicolas", 80, d1));*/
+        int contador = 0;
         
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss");   
         String usuario = "";
@@ -75,14 +73,16 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                    for(Test t: Db.getTestes()){
-                                        if(t.getNomeUsuario().equals(usuario)){%>
+                                    contador=0;
+                                    for(Test t: Test.compareData(Db.getTestes())){
+                                        if(t.getNomeUsuario().equals(usuario) && contador<10){%>
                                         <tr>
                                             <td><%=t.getNomeUsuario()%></td>
                                             <td><%=t.getNota()%></td>
                                             <td><%=formato.format(t.getData().getTime())%></td>
                                         </tr>
-                                        <%}
+                                        <%
+                                        contador++;}
                                     }%>
                                 </tbody>
                             </table>
@@ -140,14 +140,22 @@
                                     <th>Data</th>
                                 </thead>
                                 <tbody>
-                                    <%for(int i=0; i<=9; i++){%>
+                                    <%
+                                    contador = 0;
+                                    for(Test t: Test.compareData(Db.getTestes())){
+                                        if(contador<10){
+                                    %>
+                                    
                                     <tr>
-                                        <%Test t = Db.getTestes().get(i);%>
                                         <td><%=t.getNomeUsuario()%></td>
                                         <td><%=t.getNota()%></td>
                                         <td><%=formato.format(t.getData().getTime())%></td>
                                     </tr>
-                                    <%}%>
+                                    <%
+                                        contador++;
+                                        } 
+                                    }
+                                    %>
                                 </tbody>
                             </table>
                         </div>
@@ -163,16 +171,17 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                    if(usuario==""){
-                                        ArrayList<Test> t = Db.getTestes();
-                                        Collections.sort(t);
-                                    
-                                    for(int i=0; i<=9; i++){%>
+                                    contador = 0;
+                                    for(Test t: Test.compareNota(Db.getTestes())){
+                                        if(contador<10){
+                                    %>
                                     <tr>
-                                        <td><%=t.get(i).getNomeUsuario()%></td>
-                                        <td><%=t.get(i).getNota()%></td>
+                                        <td><%=t.getNomeUsuario()%></td>
+                                        <td><%=t.getNota()%></td>
                                     </tr>
-                                    <%}
+                                    <%
+                                        contador++;
+                                        }
                                     }%>
                                 </tbody>
                             </table>
@@ -181,7 +190,7 @@
                 </div>
                 
                 <!--***********Área do login***********-->
-                <div class="col-sm-3 borda">
+                <div id="bordaLogin" class="col-sm-3 borda">
                     <%if(request.getParameter("botaoCadastrar")!=null){%>
                         <h2 class="text-center">Cadastro</h2>
                         <%if(request.getParameter("cadastrar")!=null && request.getParameter("nomec")!=null){
@@ -213,9 +222,7 @@
                         <input type="submit" value="Cadastrar" name="botaoCadastrar" class="btn" id="btnLogin">
                     </form>
                 </div>
-                    
                 <%}%>
-                   
                 <%}%>
             </div>
         <%@include file="WEB-INF/jspf/bootstrapBody.jspf" %>

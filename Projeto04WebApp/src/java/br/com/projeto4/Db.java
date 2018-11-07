@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.logging.SimpleFormatter;
+import java.util.Comparator;
 
 /**
  *
@@ -125,38 +125,38 @@ public class Db {
         if(Testes.isEmpty()){
         Calendar d1 = Calendar.getInstance();
         d1.set(2018, 10, 6, 11, 35, 10);
-        Testes.add(new Test("Vinicius", 75, d1));
+        Testes.add(new Test("Vinicius", 7.5, d1));
         Calendar d2 = Calendar.getInstance();
         d2.set(2018, 10, 4, 11, 20, 1);
-        Testes.add(new Test("Thiago", 65, d2));
+        Testes.add(new Test("Thiago", 6.5, d2));
         Calendar d3 = Calendar.getInstance();
         d3.set(2018, 10, 4, 14, 21, 8);
-        Testes.add(new Test("Thiago", 60, d3));
+        Testes.add(new Test("Thiago", 6.0, d3));
         Calendar d4 = Calendar.getInstance();
         d4.set(2018, 10, 3, 17, 12, 36);
-        Testes.add(new Test("Leonardo", 85, d4));
+        Testes.add(new Test("Leonardo", 8.5, d4));
         Calendar d5 = Calendar.getInstance();
         d5.set(2018, 10, 2, 15, 3, 55);
-        Testes.add(new Test("Vinicius", 90, d5));
+        Testes.add(new Test("Vinicius", 9.0, d5));
         Calendar d6 = Calendar.getInstance();
         d6.set(2018, 10, 1, 10, 9, 47);
-        Testes.add(new Test("Leonardo", 55, d6));
+        Testes.add(new Test("Leonardo", 5.5, d6));
         Calendar d7 = Calendar.getInstance();
         d7.set(2018, 10, 1, 8, 10, 48);
-        Testes.add(new Test("Vinicius", 45, d7));
+        Testes.add(new Test("Vinicius", 4.5, d7));
         Calendar d8 = Calendar.getInstance();
         d8.set(2018, 9, 30, 9, 42, 2);
-        Testes.add(new Test("Leonardo", 60, d8));
+        Testes.add(new Test("Leonardo", 6.0, d8));
         Calendar d9 = Calendar.getInstance();
         d9.set(2018, 9, 25, 16, 55, 5);
-        Testes.add(new Test("Thiago", 95, d9));
+        Testes.add(new Test("Thiago", 9.5, d9));
         Calendar d10 = Calendar.getInstance();
         d10.set(2018, 9, 24, 20, 53, 32);
-        Testes.add(new Test("Vinicius", 55, d10));
+        Testes.add(new Test("Vinicius", 5.5, d10));
         }
         return Testes;
     }
-    
+
     private static final ArrayList<User> Users = new ArrayList<>();
     public static ArrayList<User> getUser(){
         Users.add(new User ("Leonardo"));
@@ -164,6 +164,7 @@ public class Db {
         Users.add(new User ("Vinicius"));
         return Users;
     }
+    
     public static boolean usersdoArrayList(String user) {
         for(User u: Db.getUser()){
             if (u.getUser().equals(user) == true){
