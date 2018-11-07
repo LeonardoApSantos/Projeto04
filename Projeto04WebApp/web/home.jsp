@@ -27,7 +27,6 @@
         <!--***********Declaração de Variáveis e Checagem de Sessão***********-->
         <%
         int contador = 0;
-        
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss");   
         String usuario = "";
         if(request.getParameter("botaoEntrar")!=null && Db.usersdoArrayList(request.getParameter("nome"))){
@@ -38,16 +37,15 @@
             usuario = "";
             session.invalidate();
         }%>
-        
         <!--***********Banner do Site***********-->
         <div class="imagem">
             <img src="imgs/BannerGames.png" class="img-responsive"/>
         </div>
         
         <!--***********Navegador do Site (poderá adicionar botões se precisar)***********-->
-        <nav id="cabecalho" class="navbar navbar-default">
+        <nav id="cabecalho" class="navbar">
             <div class="container">
-                <div class="navbar-header">
+                <div class="text-center">
                     <h1 class="text-muted"><span class="text-info">Gamer</span> Quiz</h1>
                 </div>
             </div>
