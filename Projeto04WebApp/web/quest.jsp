@@ -18,6 +18,7 @@
     <body>
         <!--***********Declaração de Variáveis e Checagem de Sessão***********-->
         <%
+        int contadorQuest = 1;
         if(session.getAttribute("usuario")==null){
             response.sendRedirect("home.jsp");
         }
@@ -52,18 +53,32 @@
         <% } %>
         <div class="container">
             <div class="row">
-        <h2>Test</h2>
-        <form>
-            <% for(Question q: Db.getTest()){ %>
-                <h3>Question: <%= q.getQuestion() %></h3>
-                    <% for(int i=0; i<q.getAlternatives().length; i++){ %>
-                    <input type="radio" name="<%= q.getQuestion() %>" value="<%= q.getAlternatives()[i] %>" required><%=q.getAlternatives()[i] %>
+                <div id="blocoConteudoQuest" class="col-sm-12 borda blocoConteudo">
+                <h2>Test</h2>
+                <form method="POST" class="form-group">
+                    <%for(Question q: Db.getTest()){ %>
+                        <h3>Question <%=contadorQuest%> : <%= q.getQuestion() %></h3>
+                            <% for(int i=0; i<q.getAlternatives().length; i++){ %>
+                            <div id="alternativas">
+                                <input type="radio" required name="<%= q.getQuestion() %>" value="<%= q.getAlternatives()[i] %>" ><%=q.getAlternatives()[i] %>
+                            </div>
+                            <% } 
+                            contadorQuest++; 
+                            %>
+                            
+                            <hr>
+                            
                     <% } %>
-                    <hr>
-            <% } %>
-            <input type="submit" name="enviar_test" value="Enviar"/>
-            <a href="home.jsp" role="button">Voltar</a>
-        </form>
+                    <div class="col-sm-6">
+                        <input type="submit" value="Enviar" name="enviar_test" class="btn" id="btnLogin">
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="home.jsp" role="button" class="btn" id="btnLogin">Voltar</a>
+                    </div>
+                    <!--<input type="submit" name="enviar_test" value="Enviar"/>
+                    <a href="home.jsp" role="button">Voltar</a>-->
+                </form>
+                </div>
             </div>
         </div>
     </body>

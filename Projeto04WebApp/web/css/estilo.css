@@ -28,6 +28,16 @@ th{
     text-align: center;
 }
 
+#alternativas{
+    display: block;
+}
+
+.blocoConteudo{
+    margin-bottom: 20px;
+}
+#blocoConteudoQuest{
+    padding-bottom: 20px;
+}
 .borda{
     border: 2px solid #f2f2f2;
 }

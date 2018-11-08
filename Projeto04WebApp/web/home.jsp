@@ -27,8 +27,12 @@
         <!--***********Declaração de Variáveis e Checagem de Sessão***********-->
         <%
         int contador = 0;
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss");   
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss");
+        
         String usuario = "";
+        if(session.getAttribute("usuario")!=null){
+            usuario = (String)session.getAttribute("usuario");
+        }
         if(request.getParameter("botaoEntrar")!=null && Db.usersdoArrayList(request.getParameter("nome"))){
             session.setAttribute("usuario", request.getParameter("nome"));
             usuario = (String)session.getAttribute("usuario");
@@ -81,7 +85,12 @@
                                         </tr>
                                         <%
                                         contador++;}
-                                    }%>
+                                    }
+                                    if(contador==0){%>
+                                    <tr>
+                                        <td colspan="3">Você ainda não realizou nenhum teste.</td>
+                                    </tr>
+                                    <%}%>
                                 </tbody>
                             </table>
                         </div>
@@ -114,7 +123,7 @@
                     </div>
                 </div>
                 <!--***********Área do login***********-->
-                <div class="col-sm-3 borda">
+                <div id="bordaLogin" class="col-sm-3 borda">
                     
                     <h2 class="text-center">Bem-vindo! <%=(String)session.getAttribute("usuario")%></h2>
                     <form method="POST" class="form-group">
@@ -207,6 +216,7 @@
                 
                 <%}%>
             </div>
+        </div>
         <%@include file="WEB-INF/jspf/bootstrapBody.jspf" %>
     </body>
 </html>
