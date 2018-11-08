@@ -189,19 +189,7 @@
                 
                 <!--***********Área do login***********-->
                 <div id="bordaLogin" class="col-sm-3 borda">
-                    <%if(request.getParameter("botaoCadastrar")!=null){%>
-                        <h2 class="text-center">Cadastro</h2>
-                        <%if(request.getParameter("cadastrar")!=null && request.getParameter("nomec")!=null){
-                            String nome = request.getParameter("nomec");
-                            Db.getUser().add(new User(nome));
-                        }%>
-                        <form method="POST" class="form-group">
-                        <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nomec">
-                        <input type="submit" value="Cadastrar" name="cadastrar" class="btn" id="btnLogin">
-                        </form>
-                </div>
-                    <%}else{%>
+                    
                      <h2 class="text-center">Login</h2>
                     
                     <form method="POST" class="form-group">
@@ -211,16 +199,12 @@
                                 request.getParameter("nome")!=null && 
                                 !Db.usersdoArrayList(request.getParameter("nome"))){%>
                         <span>Digite um nome válido.</span>
-                        <%}/*else if(request.getParameter("botaoCadastrar")!=null && request.getParameter("nome")!=null ){
-
-                            String nome = request.getParameter("nome");
-                            Db.getUser().add(new User(nome));
-                        }*/%>
+                        <%}%>
                         <input type="submit" value="Entrar" name="botaoEntrar" class="btn" id="btnLogin">
-                        <input type="submit" value="Cadastrar" name="botaoCadastrar" class="btn" id="btnLogin">
+                        <a href="cadastrar.jsp" class="btn" id="btnLogin">Cadastrar</a>
                     </form>
                 </div>
-                <%}%>
+                
                 <%}%>
             </div>
         <%@include file="WEB-INF/jspf/bootstrapBody.jspf" %>
