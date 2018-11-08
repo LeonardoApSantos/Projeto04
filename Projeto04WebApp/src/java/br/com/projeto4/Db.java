@@ -5,11 +5,13 @@
  */
 package br.com.projeto4;
 
+import static java.lang.Math.random;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
 
 /**
  *
@@ -19,7 +21,7 @@ public class Db {
     public static ArrayList<Question> getTest(){
         ArrayList<Question> test = new ArrayList<>();
         
-        int x;
+        Random gerador = new Random();
         String[] q = new String[10];
         String[][] y = new String[10][3];
         String a1 = "";
@@ -79,8 +81,7 @@ public class Db {
         
         for(int i=0;i<10;i++){
             
-            int valor = (int) (Math.random() * 7);
-            x=valor;
+            int x = gerador.nextInt(6) + 1;
             
             a1 = y[i][0];
             a2 = y[i][1];
