@@ -31,14 +31,14 @@
             <div class="row">
                 <div class="col-sm-4"></div>
                 <div id="conteudoCadastro" class="col-sm-4 borda">
-                    <%if(request.getParameter("cadastrar")!=null && request.getParameter("nome")!=null){
+                    <%if(request.getParameter("cadastrar")!=null && request.getParameter("nome")!=null && request.getParameter("nome")!=""){
                                     String nome = request.getParameter("nome");
                                     Db.getUser().add(new User(nome));
                                     response.sendRedirect("home.jsp");
                                 }%>
                     <form method="POST" class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome">
+                        <input type="text" class="form-control" id="nome" name="nome" required>
                         <input type="submit" value="Cadastrar" name="cadastrar" class="btn botao" id="btnCadastrar">
                         <a href="home.jsp" class="btn botao" id="btnVoltar">Voltar</a>
                     </form>

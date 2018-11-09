@@ -206,10 +206,10 @@
                     
                     <form method="POST" class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome">
+                        <input type="text" class="form-control" id="nome" name="nome" required>
                         <%if(request.getParameter("botaoEntrar")!=null && 
-                                request.getParameter("nome")!=null && 
-                                !Db.usersdoArrayList(request.getParameter("nome"))){%>
+                                request.getParameter("nome")!=null &&
+                                !Db.usersdoArrayList(request.getParameter("nome") )){%>
                         <span>Digite um nome válido.</span>
                         <%}%>
                         <input type="submit" value="Entrar" name="botaoEntrar" class="btn botao" id="btnLogin">
