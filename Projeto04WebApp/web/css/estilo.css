@@ -32,14 +32,11 @@ th{
     display: block;
 }
 
-.blocoConteudo{
-    margin-bottom: 20px;
-}
-#blocoConteudoQuest{
-    padding-bottom: 20px;
-}
+
 .borda{
-    border: 2px solid #f2f2f2;
+    border: 3px solid #f2f2f2;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 #bordaLogin{
     border-left: hidden;
@@ -48,11 +45,59 @@ th{
 .imagem{
     width: 100%;
 }
-
-#btnLogin{
+#conteudoCadastro{
+    padding-top: 20px;
+}
+.botao{
     width: 100%;
-    background-color: #668cff;
     font-size: 14px;
     color: white;
     margin-top: 10px;
+}
+#btnLogin{
+    background-color: #66a3ff;
+}
+#btnLogin:hover{
+    background-color: #80b3ff;
+    color: white;
+}
+#btnSair{
+    background-color: #ff6666;
+}
+#btnSair:hover{
+    background-color: #ff8080;
+    color: white;
+}
+#btnVoltar{
+    background-color: #f9ff4d;
+}
+#btnVoltar:hover{
+    background-color: #faff66;
+    color: white;
+}
+#btnCadastrar{
+    background-color: #ffbe66;
+}
+#btnCadastrar:hover{
+    background-color: #ffca80;
+    color: white;
+}
+#btnEnviar{
+    background-color: #6dff66;
+}
+#btnEnviar:hover{
+    background-color: #86ff80;
+    color: white;
+}
+
+.nota{
+    font-size: 60px;
+}
+
+#notaAlta{
+    color: #33ff33;
+}
+
+#notaBaixa{
+    color: #ff1a1a;
 }

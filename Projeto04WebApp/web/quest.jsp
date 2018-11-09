@@ -4,6 +4,8 @@
     Author     : Desktop
 --%>
 
+<%@page import="java.util.Calendar"%>
+<%@page import="br.com.projeto4.Test"%>
 <%@page import="br.com.projeto4.Db"%>
 <%@page import="br.com.projeto4.Question"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,7 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
         <%@include file="WEB-INF/jspf/bootstrapHead.jspf"%>
-        <title>Teste - 26/10</title>
+        <title>Gamer Quiz | Quiz</title>
     </head>
     <body>
         <!--***********Declaração de Variáveis e Checagem de Sessão***********-->
@@ -42,25 +44,38 @@
             int sum = 0;
             for (Question q: Db.getTest()){
                 String userAnswer = request.getParameter(q.getQuestion());
-                if(userAnswer.equals(q.getAnswer())){
+                /*if(userAnswer.equals(q.getAnswer())){
                     sum++;
-                }
-            } %>
-        <hr><hr>
-        <h1 style="color:blue">
-            Nota: <u><%= 100*((double)(sum)/10.0) %></u>
-        </h1>
-        <% } %>
+                }*/
+                %><h1><%=userAnswer%></h1><%
+            }
+            sum = 100*((sum)/10);
+            Db.getTestes().add(new Test(session.getAttribute("usuario").toString(), sum, Calendar.getInstance()));
+        %>
+        <!--<hr><hr>-->
         <div class="container">
             <div class="row">
-                <div id="blocoConteudoQuest" class="col-sm-12 borda blocoConteudo">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 borda">
+                    <h3 class="text-center">Teste realizado com sucesso!</h3>
+                    <h1 class="text-center">Nota: <%= 100*((double)(sum)/10.0) %></h1>
+                        <a href="home.jsp" role="button" class="btn botao" id="btnVoltar">Voltar</a>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+        <% } else{%>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 borda">
                 <h2>Test</h2>
                 <form method="POST" class="form-group">
                     <%for(Question q: Db.getTest()){ %>
                         <h3>Question <%=contadorQuest%> : <%= q.getQuestion() %></h3>
                             <% for(int i=0; i<q.getAlternatives().length; i++){ %>
                             <div id="alternativas">
-                                <input type="radio" required name="<%= q.getQuestion() %>" value="<%= q.getAlternatives()[i] %>" ><%=q.getAlternatives()[i] %>
+                                <input type="radio" required name="<%=q.getQuestion()%>" value="<%=q.getAlternatives()[i]%>"><%=q.getAlternatives()[i]%>
                             </div>
                             <% } 
                             contadorQuest++; 
@@ -69,17 +84,20 @@
                             <hr>
                             
                     <% } %>
-                    <div class="col-sm-6">
-                        <input type="submit" value="Enviar" name="enviar_test" class="btn" id="btnLogin">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <input type="submit" value="Enviar" name="enviar_test" class="btn botao" id="btnEnviar">
                     </div>
-                    <div class="col-sm-6">
-                        <a href="home.jsp" role="button" class="btn" id="btnLogin">Voltar</a>
+                    <div class="col-sm-4">
+                        <a href="home.jsp" role="button" class="btn botao" id="btnVoltar">Voltar</a>
                     </div>
+                    <div class="col-sm-2"></div>
                     <!--<input type="submit" name="enviar_test" value="Enviar"/>
                     <a href="home.jsp" role="button">Voltar</a>-->
                 </form>
                 </div>
             </div>
         </div>
+        <%}%>
     </body>
 </html>

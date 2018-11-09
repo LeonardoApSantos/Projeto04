@@ -10,23 +10,41 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
+        <%@include file="WEB-INF/jspf/bootstrapHead.jspf"%>
+        <title>Gamer Quiz | Cadastro</title>
     </head>
     <body>
+        <div class="imagem">
+            <img src="imgs/BannerGames.png" class="img-responsive"/>
+        </div>
         
-            <h2 class="text-center">Cadastro</h2>
-            <%if(request.getParameter("cadastrar")!=null && request.getParameter("nome")!=null){
-                            String nome = request.getParameter("nome");
-                            Db.getUser().add(new User(nome));
-                            response.sendRedirect("home.jsp");
-                        }%>
-            <form method="POST" class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome">
-                <input type="submit" value="Cadastrar" name="cadastrar" class="btn" id="btnLogin">
-                <a href="home.jsp" class="btn" id="btnLogin">Voltar</a>
-            </form>
+        <nav id="cabecalho" class="navbar">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="text-muted">Cadastro</h1>
+                </div>
+            </div>
+        </nav>
         
-        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div id="conteudoCadastro" class="col-sm-4 borda">
+                    <%if(request.getParameter("cadastrar")!=null && request.getParameter("nome")!=null){
+                                    String nome = request.getParameter("nome");
+                                    Db.getUser().add(new User(nome));
+                                    response.sendRedirect("home.jsp");
+                                }%>
+                    <form method="POST" class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome">
+                        <input type="submit" value="Cadastrar" name="cadastrar" class="btn botao" id="btnCadastrar">
+                        <a href="home.jsp" class="btn botao" id="btnVoltar">Voltar</a>
+                    </form>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
     </body>
 </html>

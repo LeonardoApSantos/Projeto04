@@ -4,6 +4,7 @@
     Author     : Leona
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.Comparator"%>
 <%@page import="java.util.Arrays"%>
@@ -21,14 +22,15 @@
         <meta charset="utf-8">
         <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
         <%@include file="WEB-INF/jspf/bootstrapHead.jspf"%>
-        <title>Home</title>
+        <title>Gamer Quiz | Home</title>
     </head>
     <body>
         <!--***********Declaração de Variáveis e Checagem de Sessão***********-->
         <%
+        double media = 0;
         int contador = 0;
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy 'às' HH:mm:ss");
-        
+        DecimalFormat formatoNum = new DecimalFormat("#,###0.0");
         String usuario = "";
         if(session.getAttribute("usuario")!=null){
             usuario = (String)session.getAttribute("usuario");
@@ -80,7 +82,7 @@
                                         if(t.getNomeUsuario().equals(usuario) && contador<10){%>
                                         <tr>
                                             <td><%=t.getNomeUsuario()%></td>
-                                            <td><%=t.getNota()%></td>
+                                            <td><%=formatoNum.format(t.getNota())%></td>
                                             <td><%=formato.format(t.getData().getTime())%></td>
                                         </tr>
                                         <%
@@ -95,30 +97,31 @@
                             </table>
                         </div>
                         <!--***********Rank***********-->
-                        <div class="col-sm-4">
-                            <h3>Os melhores!</h3>
+                        <div class="col-sm-4 text-center">
+                            <h3>Sua média</h3>
                             <!--Tabela-->
-                            <table class="table table-hover table-bordered">
-                                <thead>
-                                    <th>Nome</th>
-                                    <th>Nota</th>
-                                </thead>
-                                <tbody>
-                                    
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Leonardo</td>
-                                        <td>7.0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            
+                            <%
+                            contador = 0;
+                                            
+                            for(Test t: Db.getTestes()){
+                                if(t.getNomeUsuario().equals(usuario)){
+                                    media += t.getNota();
+                                    contador++;  
+                                }
+                            }
+                            media/=contador;
+                            if(Double.isNaN(media)){
+                                media=0;
+                            }
+                            
+                            if(media<6){
+                                %><label class="nota" id="notaBaixa"><%=formatoNum.format(media)%></label><%
+                            }else{
+                                %><label class="nota" id="notaAlta"><%=formatoNum.format(media)%></label><%
+                            }
+                            %>
+                                        
                         </div>
                     </div>
                 </div>
@@ -127,8 +130,8 @@
                     
                     <h2 class="text-center">Bem-vindo! <%=(String)session.getAttribute("usuario")%></h2>
                     <form method="POST" class="form-group">
-                        <a href="quest.jsp"><input type="button" value="Iniciar teste" name="botaoTeste" class="btn" id="btnLogin"></a>
-                        <input type="submit" value="Sair" name="botaoSair" class="btn" id="btnLogin">
+                        <a href="quest.jsp"><input type="button" value="Iniciar teste" name="botaoTeste" class="btn botao" id="btnLogin"></a>
+                        <input type="submit" value="Sair" name="botaoSair" class="btn botao" id="btnSair">
                     </form>
                 </div>
                 <%}
@@ -155,11 +158,11 @@
                                     
                                     <tr>
                                         <td><%=t.getNomeUsuario()%></td>
-                                        <td><%=t.getNota()%></td>
+                                        <td><%=formatoNum.format(t.getNota())%></td>
                                         <td><%=formato.format(t.getData().getTime())%></td>
                                     </tr>
                                     <%
-                                        contador++;
+                                            contador++;
                                         } 
                                     }
                                     %>
@@ -167,7 +170,7 @@
                             </table>
                         </div>
                         
-                        <!--***********Rank***********-->
+                        <!--***********Média***********-->
                         <div class="col-sm-4">
                             <h3>Os melhores!</h3>
                             <!--Tabela-->
@@ -184,10 +187,10 @@
                                     %>
                                     <tr>
                                         <td><%=t.getNomeUsuario()%></td>
-                                        <td><%=t.getNota()%></td>
+                                        <td><%=formatoNum.format(t.getNota())%></td>
                                     </tr>
                                     <%
-                                        contador++;
+                                            contador++;
                                         }
                                     }%>
                                 </tbody>
@@ -209,8 +212,8 @@
                                 !Db.usersdoArrayList(request.getParameter("nome"))){%>
                         <span>Digite um nome válido.</span>
                         <%}%>
-                        <input type="submit" value="Entrar" name="botaoEntrar" class="btn" id="btnLogin">
-                        <a href="cadastrar.jsp" class="btn" id="btnLogin">Cadastrar</a>
+                        <input type="submit" value="Entrar" name="botaoEntrar" class="btn botao" id="btnLogin">
+                        <a href="cadastrar.jsp" class="btn botao" id="btnCadastrar">Cadastrar</a>
                     </form>
                 </div>
                 
